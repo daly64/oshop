@@ -1,4 +1,18 @@
-<mat-toolbar color="primary">
-  <mat-icon fontIcon="radio_button_unchecked"></mat-icon>
+<mat-toolbar color="info">
+  <mat-icon fontIcon="radio_button_unchecked" />
   <span> {{ title }}</span>
+
+  <a mat-button routerLink="">Home</a>
+  <a mat-button routerLink="shopping-cart">Shopping Cart</a>
+
+  <a mat-button [matMenuTriggerFor]="menu">User Name</a>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="order-success">My Orders</button>
+    <button mat-menu-item routerLink="admin/orders">Manage Orders</button>
+    <button mat-menu-item routerLink="admin/products">Manage Products</button>
+    <button mat-menu-item>Log Out</button>
+  </mat-menu>
 </mat-toolbar>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

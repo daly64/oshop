@@ -1,0 +1,11 @@
+a {
+  margin-left: 1%;
+}
+span {
+  margin-right: 1%;
+}
+.container {
+  display: flexbox;
+  padding: 1%;
+
+}
