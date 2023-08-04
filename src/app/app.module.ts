@@ -23,6 +23,7 @@ import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.compo
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { NavbarComponent } from './elements/navbar/navbar.component';
 
 let Material = [
   MatToolbarModule,
@@ -43,6 +44,7 @@ let Material = [
     AdminOrdersComponent,
     LoginComponent,
     GoogleBtnComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

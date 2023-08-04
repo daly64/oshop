@@ -11,5 +11,6 @@ export class GoogleBtnComponent {
   constructor(private afAuth: AngularFireAuth) {}
   login() {
     this.afAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+    
   }
 }
