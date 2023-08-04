@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GoogleBtnComponent } from './google-btn/google-btn.component';
+import { GoogleBtnComponent } from './elements/google-btn/google-btn.component';
 import { AdminOrdersComponent } from './pages/admin/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './pages/admin/admin-products/admin-products.component';
 import { CheckOutComponent } from './pages/check-out/check-out.component';
