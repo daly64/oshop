@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
-import firebase from 'firebase/compat/app';
-import { Observable } from 'rxjs';
+import { AuthService } from './../../services/auth.service';
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',
@@ -10,21 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class NavbarComponent {
   title: string = 'shop';
-  $user: Observable<firebase.User | null>;
+  
 
-  constructor(private afAuth: AngularFireAuth, private router: Router) {
-    if (afAuth.authState) {
-      this.$user = afAuth.authState;
-    }
+  constructor(public authservice:AuthService) {
+
   }
-  /*     afAuth.authState.subscribe((user) => {
-      if (user) {
-        this.user = user;
-      }
-    }); */
 
   logout() {
-    this.afAuth.signOut();
-    this.router.navigate(['login']);
+    this.authservice.logout()
   }
 }

@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
-import firebase from 'firebase/compat/app';
+import { AuthService } from './../../services/auth.service';
 
 @Component({
   selector: 'google-btn',
@@ -9,9 +7,8 @@ import firebase from 'firebase/compat/app';
   styleUrls: ['./google-btn.component.css'],
 })
 export class GoogleBtnComponent {
-  constructor(private afAuth: AngularFireAuth, private router: Router) {}
+  constructor(private authservice: AuthService) {}
   login() {
-    this.afAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
-    this.router.navigate(['shopping-cart']);
+    this.authservice.login();
   }
 }
