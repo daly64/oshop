@@ -8,14 +8,24 @@ import { OrderSuccessComponent } from './pages/order-success/order-success.compo
 import { LoginComponent } from './pages/login/login.component';
 import { AdminProductsComponent } from './pages/admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './pages/admin/admin-orders/admin-orders.component';
+import { AuthGuard } from './services/auth-guard.service';
+import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 
 const routes: Routes = [
+  // anonymouse user
   { path: '', component: HomeComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
-  { path: 'check-out', component: CheckOutComponent },
-  { path: 'order-success', component: OrderSuccessComponent },
   { path: 'login', component: LoginComponent },
+  // loger user
+  { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
+  {
+    path: 'order-success',
+    component: OrderSuccessComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'my-orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
+  // admin
   { path: 'admin/products', component: AdminProductsComponent },
   { path: 'admin/orders', component: AdminOrdersComponent },
 ];
