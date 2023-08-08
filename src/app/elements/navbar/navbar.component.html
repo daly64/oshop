@@ -2,7 +2,7 @@
   <mat-icon fontIcon="radio_button_unchecked" />
   <span> {{ title }}</span>
 
-  <a mat-button routerLink="">Home</a>
+  <!-- <a mat-button routerLink="" >Home</a> -->
   <a mat-button routerLink="shopping-cart">Shopping Cart</a>
   <ng-template #anonymousUser>
     <a mat-button routerLink="Login" routerLink="login">Login</a>
@@ -16,9 +16,14 @@
 
   <!-- user menu -->
   <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="order-success">My Orders</button>
+    <button mat-menu-item routerLink="my-orders">My Orders</button>
+    <button mat-menu-item routerLink="order-success">My Success</button>
+    <button mat-menu-item routerLink="check-out">Check out</button>
+    <button mat-menu-item routerLink="products">Products</button>
+    <mat-divider />
     <button mat-menu-item routerLink="admin/orders">Manage Orders</button>
     <button mat-menu-item routerLink="admin/products">Manage Products</button>
+    <mat-divider />
     <button mat-menu-item (click)="logout()">Log Out</button>
   </mat-menu>
 </mat-toolbar>
