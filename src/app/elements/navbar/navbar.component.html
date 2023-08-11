@@ -7,10 +7,11 @@
   <ng-template #anonymousUser>
     <a mat-button routerLink="Login" routerLink="login">Login</a>
   </ng-template>
+
   <a
     mat-button
     [matMenuTriggerFor]="menu"
-    *ngIf="authservice.$user | async as user; else anonymousUser"
+    *ngIf="authservice.user as user; else anonymousUser"
     >{{ user.displayName }}</a
   >
 
@@ -19,8 +20,8 @@
     <button mat-menu-item routerLink="my-orders">My Orders</button>
     <button mat-menu-item routerLink="order-success">My Success</button>
     <button mat-menu-item routerLink="check-out">Check out</button>
-    <button mat-menu-item routerLink="products">Products</button>
     <mat-divider />
+    <button mat-menu-item routerLink="products">Products</button>
     <button mat-menu-item routerLink="admin/orders">Manage Orders</button>
     <button mat-menu-item routerLink="admin/products">Manage Products</button>
     <mat-divider />

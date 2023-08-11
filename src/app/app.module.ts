@@ -25,6 +25,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { NavbarComponent } from './elements/navbar/navbar.component';
 import { AuthService } from './services/auth.service';
+import { AdminAuthService } from './services/admin-auth.service';
 
 let Material = [
   MatToolbarModule,
@@ -57,7 +58,7 @@ let Material = [
     BrowserAnimationsModule,
     Material,
   ],
-  providers: [AuthService],
+  providers: [AuthService,AdminAuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

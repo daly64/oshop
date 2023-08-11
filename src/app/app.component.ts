@@ -8,12 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  constructor(
-    private authService: AuthService,
-    private userService: UserService
-  ) {
-    authService.$user.subscribe((user) => {
-      if (user) userService.save(user);
-    });
-  }
+
 }

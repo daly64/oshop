@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
+import {
+  AngularFireDatabase,
+  AngularFireObject,
+} from '@angular/fire/compat/database';
+
 import firebase from 'firebase/compat';
+import { AppUser } from '../models/AppUser';
 
 @Injectable({
   providedIn: 'root',
@@ -12,5 +17,10 @@ export class UserService {
       name: user.displayName,
       email: user.email,
     });
+  }
+  // FirebaseObjectObservable<User> to AngularFireObject<user>
+
+  get(uid: string): AngularFireObject<AppUser> {
+    return this.db.object('/users/' + uid);
   }
 }

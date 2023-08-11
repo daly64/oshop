@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
 import { AdminOrdersComponent } from './pages/admin/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './pages/admin/admin-products/admin-products.component';
 import { CheckOutComponent } from './pages/check-out/check-out.component';
@@ -9,7 +10,7 @@ import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 import { OrderSuccessComponent } from './pages/order-success/order-success.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
-import { authGuard } from './guards/auth.guard';
+import { adminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   // anonymouse user
@@ -17,11 +18,6 @@ const routes: Routes = [
   { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: 'login', component: LoginComponent },
   // loger user
-  {
-    path: 'products',
-    component: ProductsComponent,
-    canActivate: [authGuard],
-  },
   {
     path: 'check-out',
     component: CheckOutComponent,
@@ -39,14 +35,19 @@ const routes: Routes = [
   },
   // admin
   {
+    path: 'products',
+    component: ProductsComponent,
+    canActivate: [adminGuard],
+  },
+  {
     path: 'admin/products',
     component: AdminProductsComponent,
-    canActivate: [authGuard],
+    canActivate: [adminGuard],
   },
   {
     path: 'admin/orders',
     component: AdminOrdersComponent,
-    canActivate: [authGuard],
+    canActivate: [adminGuard],
   },
 ];
 
