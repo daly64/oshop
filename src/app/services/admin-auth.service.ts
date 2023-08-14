@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, map } from 'rxjs';
 import { AuthService } from './auth.service';
 import { UserService } from './user.service';
 
@@ -7,15 +8,17 @@ import { UserService } from './user.service';
 })
 export class AdminAuthService {
   constructor(private auth: AuthService, private userService: UserService) {}
-  isAdmin(): boolean {
-    let uid = this.auth.user.uid;
-    let appUser = this.userService.get(uid);
-    appUser.valueChanges().forEach((value) => {
-      console.log(value);
-      if (value)
-        localStorage.setItem('isAdmin', value.isAdmin ? 'true' : 'false');
-    });
-
-    return true;
+  isAdmin(): Observable<boolean> {
+    return this.auth.user$.pipe(
+      map((user) => {
+        if (user) {
+          this.userService
+            .get(user.uid)
+            .valueChanges()
+            .pipe(map((user) => (user ? user.isAdmin : false)));
+        }
+        return false;
+      })
+    );
   }
 }

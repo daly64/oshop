@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
@@ -8,30 +8,22 @@ import firebase from 'firebase/compat';
   providedIn: 'root',
 })
 export class AuthService {
-  user: UserInfo;
   user$: Observable<firebase.User>;
 
   constructor(private afAuth: AngularFireAuth, public router: Router) {
     this.user$ = afAuth.authState as Observable<firebase.User>;
+  }
 
-    afAuth.authState.subscribe((user) => {
-      if (user) {
-        this.user = user;
-      }
-    });
+  isLogin(): Observable<boolean> {
+    return this.afAuth.authState.pipe(
+      map((user) => {
+        return user ? true : false;
+      })
+    );
   }
 
   login() {
-    localStorage.setItem('isLoged', 'true');
-    let provider = new GoogleAuthProvider();
-
-    this.afAuth.authState.subscribe((user) => {
-      if (user) {
-        this.user = user;
-      }
-    });
-
-    this.afAuth.signInWithRedirect(provider);
+    this.afAuth.signInWithRedirect(new GoogleAuthProvider());
     this.router.navigate(['check-out']);
   }
   logout() {

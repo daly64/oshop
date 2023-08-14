@@ -18,8 +18,7 @@ export class UserService {
       email: user.email,
     });
   }
-  // FirebaseObjectObservable<User> to AngularFireObject<user>
-
+ 
   get(uid: string): AngularFireObject<AppUser> {
     return this.db.object('/users/' + uid);
   }
